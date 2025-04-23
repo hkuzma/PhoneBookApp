@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+<!-- This is how we fill the Title Block of our base html -->
+{% block title %}Welcome{% endblock %}
+
+<!-- TThis is how we fill the Content Block of our base html -->
+{% block content %}
+
+<!-- The content is wrapped inside a column with specific Bootstrap classes for styling -->
+<div class="container">
+  <!-- A lead paragraph with some text -->
+   <h1>LOGGED IN {{username}}</h1>
+  <ul>
+</ul>
+
+</div>
+
+<!-- End of content block -->
+{% endblock %}
