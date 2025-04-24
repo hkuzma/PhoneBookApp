@@ -1,0 +1,37 @@
+body{
+    background-color: aliceblue;
+    margin-top: 2vw;
+}
+.container{
+    margin:0;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    column-gap: 5vw;
+}
+.header{
+    position: relative;
+    left:4vw;
+}
+.welcomebox{
+    margin-top: 1vw;
+    position: relative;
+    width:43vw;
+    height:20vw;
+    background-color: white;
+    border: double 10px black;
+    outline: solid 5px darkturquoise;
+
+    border-radius: 5%;
+}
+label{
+    font-size: x-large;
+    text-decoration: underline;
+}
+.landing{
+    width:50vw;
+    height:30vw;
+    margin-left: 25vw;
+    margin-top:35vh;
+    
+}

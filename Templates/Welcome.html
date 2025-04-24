@@ -7,13 +7,26 @@
 {% block content %}
 
 <!-- The content is wrapped inside a column with specific Bootstrap classes for styling -->
-<div class="container">
   <!-- A lead paragraph with some text -->
-   <h1>LOGGED IN {{username}}</h1>
-  <ul>
+   <div class = "header">
+    <h1>Welcome {{username}}</h1>
+   </div>
+<ul>
+    <div class = "container">
+        <label>
+            Contacts
+            <div class = "welcomebox">
+            </div>
+        </label>
+        <label>
+            Birthdays
+            <div class = "welcomebox">
+            </div>
+        </label>
+
+    </div>
 </ul>
 
-</div>
 
 <!-- End of content block -->
 {% endblock %}

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect, jsonify
+from flask import Flask, render_template, url_for, request, redirect, jsonify, session
 from flask_sqlalchemy import SQLAlchemy
 import sqlite3
 import random
@@ -11,6 +11,14 @@ def add_item(item):
     
     con.commit()
     con.close()
+    
+def get_info_item(USER, item):
+    con = sqlite3.connect('PhoneBook.db')
+    cur = con.cursor()
+    email = cur.execute(f"SELECT {item} FROM Users WHERE user_id = '{USER}'").fetchall()
+    con.close()
+    return email[0][0]
+
 
 def query_items(search):
     con = sqlite3.connect('PhoneBook.db')
@@ -41,6 +49,8 @@ def check_user(user_name, password):
 app = Flask(__name__)
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///rally_cat.db'
 # db = SQLAlchemy(app)
+app.secret_key = '2d99dbc8730b4445330703f9ee7158ac'  # required to use sessions
+
 
 @app.route("/")
 def login():
@@ -58,22 +68,24 @@ def submit():
     user_id = check_user(username, password)
     
     if  user_id != -1:
-        return redirect(url_for('Welcome',user_id=user_id))
+        session['user_id'] = user_id 
+        return redirect(url_for('Welcome'))
     else:
         return redirect(url_for('login'))
 
 @app.route("/Welcome")
 def Welcome():
     
-    user_id = request.args.get('user_id')
+    user_id = session.get('user_id')
+    print(user_id)
+    username = get_info_item(user_id, 'first_name')
     
     if user_id:
-        return render_template("Welcome.html", user_id=user_id)
+        return render_template("Welcome.html", user_id=user_id, username=username)
     return render_template("Welcome.html")
 
 
     
-    return render_template("Welcome.html")
 
 # class Item(db.Model):
 #     __tablename__ = "Item"

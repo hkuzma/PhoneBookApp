@@ -9,21 +9,22 @@
 {% block content %}
 
 <!-- The content is wrapped inside a column with specific Bootstrap classes for styling -->
-<div class="container">
   <!-- A lead paragraph with some text -->
-   <h1>Welcome to your PhoneBook</h1>
-  <ul>
-    <li>
-        <p>Login:</p>
-        <form action="/Submit" method="POST">
-            <input type="text" name="username"> 
-            <input type="password" name="password">
-            <input type="submit" value="Send">
-        </form>
-    </li>
-</ul>
-
+<div class = "landing">
+    <h1>Welcome to your PhoneBook</h1>
+    <div class = "container">
+        <label>Login:
+            <form action="/Submit" method="POST">
+                <input type="text" name="username"> 
+                <input type="password" name="password">
+                <input type="submit" value="Send">
+            </form>
+        </label>
+    </div>
 </div>
+
+
+
 
 <!-- End of content block -->
 {% endblock %}
