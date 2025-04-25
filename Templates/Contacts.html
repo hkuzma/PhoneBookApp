@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 <!-- This is how we fill the Title Block of our base html -->
-{% block title %}Welcome{% endblock %}
+{% block title %}Contacts{% endblock %}
 
 <!-- TThis is how we fill the Content Block of our base html -->
 {% block content %}
@@ -9,26 +9,18 @@
 <!-- The content is wrapped inside a column with specific Bootstrap classes for styling -->
   <!-- A lead paragraph with some text -->
    <div class = "header">
-        <a href = "/Welcome">PhoneBook<a>
-   </div>
-   <div class = "all">
+    <a href = "/Welcome">PhoneBook<a>
+    </div>
+    <div class = "all">
         <div class = "sidebar">
-            <div>
-                <p>Welcome {{username}}<p>
-                </div>
         </div>
         <div class = "container">
-            
-            <div class= "boxholder">
-                <a href = "/Contacts">Contacts</a>
-                <div class = "welcomebox"></div>
-            </div>
             <div class = "boxholder">
-                <a href = "/Birthdays">Birthdays</a>
+                <a href = "/Contacts">Contacts</a>
                 <div class = "welcomebox">
-                    <input type = "date"></input>
+
                 </div>
-            </div>
+            </div>       
         </div>
     </div>
 

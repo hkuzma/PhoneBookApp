@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import sqlite3
 import random
 from datetime import datetime, timedelta
+import datetime
 
 
 def add_item(item):
@@ -26,6 +27,9 @@ def query_items(search):
 
     con.close()
 
+def get_birthdays(user):
+    today = datetime.date()
+
     return None
 def check_user(user_name, password):
     con = sqlite3.connect('Phonebook.db')
@@ -42,6 +46,15 @@ def check_user(user_name, password):
         return user
     else:
         return -1
+    
+def get_contacts(user):
+    con = sqlite3.connect('Phonebook.db')
+    cur = con.cursor()
+    contacts = cur.execute(f"SELECT * FROM Contact_Info WHERE user_id == '{user}' ").fetchall()
+    
+    return contacts
+
+    
             
             
 
@@ -84,6 +97,12 @@ def Welcome():
         return render_template("Welcome.html", user_id=user_id, username=username)
     return render_template("Welcome.html")
 
+@app.route("/Contacts")
+def Contacts():
+    user_id = session.get('user_id')
+    contacts = get_contacts(user_id)
+    
+    return render_template("Contacts.html", user_id=user_id, contacts=contacts)
 
     
 
