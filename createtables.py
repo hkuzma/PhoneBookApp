@@ -100,6 +100,11 @@ CREATE TABLE Tags (
 )'''
 create_new_table("Tags", create_table)
 
+# Load contacts from CSV using pandas
+df_contacts = pd.read_csv("Tags.csv")
+
+# Insert into the Contact_Info table
+df_contacts.to_sql("Tags", con, if_exists='append', index=False)
 
 # Insert a testing user record
 insert_records = '''
@@ -125,7 +130,8 @@ cur.execute(insert_records)
 # Display contents of Users table
 #print_table("Users")
 #print_table("Contact_Info")
-print_table("Posts")
+#print_table("Posts")
+print_table("Tags")
 
 con.commit()
 con.close()
