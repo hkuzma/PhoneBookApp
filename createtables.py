@@ -40,6 +40,12 @@ CREATE TABLE Users (
 )'''
 create_new_table("Users", create_table)
 
+# Load contacts from CSV using pandas
+df_contacts = pd.read_csv("Users.csv")
+
+# Insert into the Contact_Info table
+df_contacts.to_sql("Users", con, if_exists='append', index=False)
+
 # Create Contact_Info table
 create_table = '''
 CREATE TABLE Contact_Info (
@@ -88,7 +94,7 @@ CREATE TABLE Tags (
 create_new_table("Tags", create_table)
 
 
-# Insert a single user record
+# Insert a testing user record
 insert_records = '''
 INSERT INTO Users (
     'user_id',
@@ -99,11 +105,11 @@ INSERT INTO Users (
     'first_name',
     'last_name'
 ) VALUES (
-    '1',
+    11,
     'henrykuzma42@gmail.com',
     'hkuzma',
     '1234',
-    '4/23/25',
+    '4/23/2025',
     'Henry',
     'Kuzma'
 )'''
