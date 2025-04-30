@@ -55,11 +55,12 @@ CREATE TABLE Contact_Info (
     'last_name',
     'email',
     'phone',
-    'relationship_context',
     'residence',
     'company',
     'birthday',
     'added_date',
+    'friendship_score',
+    'relationship_context',
     FOREIGN KEY(user_id) REFERENCES users(user_id)
 )'''
 create_new_table("Contact_Info", create_table)

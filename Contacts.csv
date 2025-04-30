@@ -1,51 +1,51 @@
-contact_id,user_id,first_name,last_name,email,phone,relationship_context,residence,company,birthday,added_date
-1,11,Min,Dysart,mdysart0@slideshare.net,603-223-8757,Donec quis orci eget orci vehicula condimentum.,Haiyang,Edgetag,12/13/70,4/23/25
-2,9,Natka,Gorton,ngorton1@eepurl.com,613-329-8510,Morbi non lectus.,Manzanillo,Devbug,5/14/58,4/21/25
-3,4,Van,Snoday,vsnoday2@google.com,754-418-3350,Maecenas tincidunt lacus at velit.,Sendangagung,Avavee,11/23/81,4/21/25
-4,4,Allene,Rosetti,arosetti3@google.pl,621-265-8150,Fusce posuere felis sed lacus.,Cardal,Browsezoom,12/13/85,4/20/25
-5,2,Venus,Mealand,vmealand4@reference.com,547-966-9323,"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante.",Jaguarari,Skyble,12/28/84,4/20/25
-6,4,Donnamarie,Dreye,ddreye5@plala.or.jp,911-815-4026,Aenean fermentum.,Kropotkin,Feedfire,11/13/58,4/20/25
-7,8,Isa,Wyndham,iwyndham6@godaddy.com,333-264-4232,"Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",Kosong,Layo,9/6/58,4/20/25
-8,3,Allison,Pickwell,apickwell7@multiply.com,547-881-9759,Suspendisse potenti.,Kedian,Quimba,12/24/53,4/25/25
-9,3,Ashil,Duddell,aduddell8@disqus.com,694-237-6978,"Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",Pinhais,Fiveclub,11/17/61,4/22/25
-10,9,Barris,O'Farris,bofarris9@posterous.com,378-225-4281,"Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.",Jardín,Quatz,9/12/59,4/23/25
-11,11,Brod,Salasar,bsalasara@shop-pro.jp,984-452-3915,Duis at velit eu est congue elementum.,Sukamaju,Jamia,5/1/58,4/22/25
-12,11,Eadie,Masi,emasib@yellowbook.com,554-248-4797,Cras in purus eu magna vulputate luctus.,Sardasht,Thoughtbridge,6/27/73,4/22/25
-13,7,Hamlen,Ensley,hensleyc@utexas.edu,725-612-8719,In blandit ultrices enim.,Ilioúpoli,Flipbug,5/25/81,4/21/25
-14,11,Angil,Alp,aalpd@bloglovin.com,973-931-2195,"Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",Ilebo,Topiclounge,1/19/91,4/20/25
-15,10,Anjela,Ffrench,affrenche@blog.com,353-868-8564,Integer non velit.,Xishaping,Zoomdog,7/11/94,4/25/25
-16,6,Michel,Bento,mbentof@nature.com,167-642-7825,Mauris lacinia sapien quis libero.,Vellinge,Muxo,10/23/01,4/20/25
-17,4,Hadleigh,Klesl,hkleslg@nba.com,466-995-4683,In eleifend quam a odio.,Xinó Neró,Yodoo,1/27/89,4/20/25
-18,8,Aubrey,Ellsbury,aellsburyh@state.gov,267-234-4341,Duis aliquam convallis nunc.,Hukou,Roomm,2/5/98,4/20/25
-19,11,Kandace,Claiton,kclaitoni@fema.gov,916-242-9755,Nullam porttitor lacus at turpis.,Ninh Giang,Skilith,12/27/75,4/24/25
-20,11,Margit,Sherme,mshermej@smh.com.au,307-392-4730,In hac habitasse platea dictumst.,Baran,Realcube,1/30/70,4/21/25
-21,7,Jacqueline,Plumbridge,jplumbridgek@phoca.cz,205-402-3133,Ut tellus.,Tigbinan,Livetube,7/14/07,4/25/25
-22,1,Donalt,Hardwidge,dhardwidgel@google.com,315-661-6206,Sed accumsan felis.,Boca Chica,Brainsphere,11/24/62,4/22/25
-23,1,Valentina,Colcomb,vcolcombm@google.de,330-972-5245,In blandit ultrices enim.,Mogilany,Livefish,6/24/66,4/22/25
-24,4,Aurilia,Getty,agettyn@blogs.com,493-962-6823,Curabitur gravida nisi at nibh.,Al Jumaylīyah,Roombo,10/31/54,4/20/25
-25,10,Percy,Oneill,poneillo@google.com,926-342-1195,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",Kampungladang,Layo,3/22/80,4/23/25
-26,10,Micah,Maplesden,mmaplesdenp@4shared.com,900-216-5201,Sed sagittis.,Alupay,Agivu,5/18/68,4/23/25
-27,1,Georgianna,Hawtin,ghawtinq@mit.edu,231-295-9951,Nulla facilisi.,Maykor,Brainverse,12/25/83,4/25/25
-28,7,Johnathon,Housaman,jhousamanr@jiathis.com,651-872-6356,Quisque porta volutpat erat.,Chyňava,Edgeclub,11/8/85,4/22/25
-29,4,Crystie,Mountstephen,cmountstephens@businesswire.com,813-637-3214,Etiam pretium iaculis justo.,Shirochanka,Cogidoo,10/3/82,4/20/25
-30,5,Darya,Diack,ddiackt@vkontakte.ru,630-437-1199,Etiam justo.,Cali,Abatz,9/21/80,4/23/25
-31,11,Verile,Douty,vdoutyu@google.com,268-995-4141,Aliquam sit amet diam in magna bibendum imperdiet.,Slobodka,Quinu,9/10/53,4/21/25
-32,5,Clayson,Ickovits,cickovitsv@springer.com,998-401-0432,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",Diriá,Edgeblab,6/14/99,4/25/25
-33,1,Harry,Hinchshaw,hhinchshaww@geocities.jp,625-248-1960,Sed accumsan felis.,Sumberan,Zooxo,11/13/02,4/24/25
-34,8,Marna,Springthorp,mspringthorpx@imageshack.us,503-851-3205,Aenean sit amet justo.,Coronel,Dabvine,1/16/72,4/21/25
-35,6,Katinka,Dreghorn,kdreghorny@virginia.edu,913-951-9438,Vivamus in felis eu sapien cursus vestibulum.,Qiandong,Latz,2/16/90,4/23/25
-36,4,Brock,Ivanitsa,bivanitsaz@ovh.net,818-900-0557,Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.,Dois Córregos,BlogXS,12/6/86,4/23/25
-37,3,Aubrey,Vicarey,avicarey10@nasa.gov,567-810-4461,Aliquam erat volutpat.,Dongjie,Browseblab,4/6/52,4/25/25
-38,2,Gustavus,Bever,gbever11@weibo.com,702-192-4344,Nulla tellus.,Konstantinovsk,Eare,6/26/99,4/20/25
-39,2,Wolfgang,Peter,wpeter12@privacy.gov.au,404-655-7696,Nullam porttitor lacus at turpis.,Gimcheon,Topicshots,7/12/65,4/25/25
-40,2,Davon,Bygreaves,dbygreaves13@mapquest.com,544-962-6793,Integer a nibh.,Kishorganj,Jatri,3/26/70,4/22/25
-41,5,Victor,Adrienne,vadrienne14@sphinn.com,807-490-4410,Morbi non quam nec dui luctus rutrum.,Babice,Linktype,7/27/64,4/25/25
-42,4,Constantia,Edridge,cedridge15@4shared.com,112-336-4165,In hac habitasse platea dictumst.,Pleven,Quimm,10/20/58,4/23/25
-43,10,Annabelle,Rushmere,arushmere16@census.gov,246-608-9468,In quis justo.,Nanto-shi,Jabbercube,2/1/58,4/25/25
-44,1,Lorelle,Wearn,lwearn17@un.org,118-308-9383,Integer tincidunt ante vel ipsum.,Kuma,Devcast,3/30/53,4/21/25
-45,1,Bernadine,Fallon,bfallon18@ow.ly,264-771-3454,Ut at dolor quis odio consequat varius.,Caracal,Livefish,7/10/64,4/21/25
-46,4,Merrill,Oldroyde,moldroyde19@google.com.au,567-966-8930,Maecenas rhoncus aliquam lacus.,Taznakht,Zoonder,2/14/68,4/22/25
-47,11,Arin,De-Ville,adeville1a@dmoz.org,343-179-3263,"Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.",Kototujuh,Meetz,12/10/57,4/20/25
-48,6,Wandis,Machon,wmachon1b@census.gov,311-960-8587,Donec quis orci eget orci vehicula condimentum.,Pulosari,Edgeclub,11/21/67,4/25/25
-49,7,Doralyn,MacKay,dmackay1c@jigsy.com,947-917-1243,Duis mattis egestas metus.,Borzęta,Myworks,6/28/74,4/24/25
-50,7,Tami,Mariaud,tmariaud1d@diigo.com,402-557-2658,Proin at turpis a pede posuere nonummy.,Omaha,Wikivu,5/24/86,4/22/25
+contact_id,user_id,first_name,last_name,email,phone,residence,company,birthday,added_date,friendship_score,relationship_context
+1,11,Min,Dysart,mdysart0@slideshare.net,603-223-8757,Haiyang,Edgetag,12/13/70,4/23/25,1.3,Donec quis orci eget orci vehicula condimentum.
+2,9,Natka,Gorton,ngorton1@eepurl.com,613-329-8510,Manzanillo,Devbug,5/14/58,4/21/25,8.6,Morbi non lectus.
+3,4,Van,Snoday,vsnoday2@google.com,754-418-3350,Sendangagung,Avavee,11/23/81,4/21/25,7.9,Maecenas tincidunt lacus at velit.
+4,4,Allene,Rosetti,arosetti3@google.pl,621-265-8150,Cardal,Browsezoom,12/13/85,4/20/25,3.3,Fusce posuere felis sed lacus.
+5,2,Venus,Mealand,vmealand4@reference.com,547-966-9323,Jaguarari,Skyble,12/28/84,4/20/25,0.7,"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante."
+6,4,Donnamarie,Dreye,ddreye5@plala.or.jp,911-815-4026,Kropotkin,Feedfire,11/13/58,4/20/25,0.1,Aenean fermentum.
+7,8,Isa,Wyndham,iwyndham6@godaddy.com,333-264-4232,Kosong,Layo,9/6/58,4/20/25,1.1,"Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus."
+8,3,Allison,Pickwell,apickwell7@multiply.com,547-881-9759,Kedian,Quimba,12/24/53,4/25/25,1.1,Suspendisse potenti.
+9,3,Ashil,Duddell,aduddell8@disqus.com,694-237-6978,Pinhais,Fiveclub,11/17/61,4/22/25,5.9,"Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus."
+10,9,Barris,O'Farris,bofarris9@posterous.com,378-225-4281,Jardín,Quatz,9/12/59,4/23/25,5.6,"Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue."
+11,11,Brod,Salasar,bsalasara@shop-pro.jp,984-452-3915,Sukamaju,Jamia,5/1/58,4/22/25,7.2,Duis at velit eu est congue elementum.
+12,11,Eadie,Masi,emasib@yellowbook.com,554-248-4797,Sardasht,Thoughtbridge,6/27/73,4/22/25,5.0,Cras in purus eu magna vulputate luctus.
+13,7,Hamlen,Ensley,hensleyc@utexas.edu,725-612-8719,Ilioúpoli,Flipbug,5/25/81,4/21/25,8.8,In blandit ultrices enim.
+14,11,Angil,Alp,aalpd@bloglovin.com,973-931-2195,Ilebo,Topiclounge,1/19/91,4/20/25,6.2,"Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros."
+15,10,Anjela,Ffrench,affrenche@blog.com,353-868-8564,Xishaping,Zoomdog,7/11/94,4/25/25,7.0,Integer non velit.
+16,6,Michel,Bento,mbentof@nature.com,167-642-7825,Vellinge,Muxo,10/23/01,4/20/25,8.3,Mauris lacinia sapien quis libero.
+17,4,Hadleigh,Klesl,hkleslg@nba.com,466-995-4683,Xinó Neró,Yodoo,1/27/89,4/20/25,5.4,In eleifend quam a odio.
+18,8,Aubrey,Ellsbury,aellsburyh@state.gov,267-234-4341,Hukou,Roomm,2/5/98,4/20/25,0.3,Duis aliquam convallis nunc.
+19,11,Kandace,Claiton,kclaitoni@fema.gov,916-242-9755,Ninh Giang,Skilith,12/27/75,4/24/25,1.9,Nullam porttitor lacus at turpis.
+20,11,Margit,Sherme,mshermej@smh.com.au,307-392-4730,Baran,Realcube,1/30/70,4/21/25,6.3,In hac habitasse platea dictumst.
+21,7,Jacqueline,Plumbridge,jplumbridgek@phoca.cz,205-402-3133,Tigbinan,Livetube,7/14/07,4/25/25,2.8,Ut tellus.
+22,1,Donalt,Hardwidge,dhardwidgel@google.com,315-661-6206,Boca Chica,Brainsphere,11/24/62,4/22/25,5.9,Sed accumsan felis.
+23,1,Valentina,Colcomb,vcolcombm@google.de,330-972-5245,Mogilany,Livefish,6/24/66,4/22/25,6.5,In blandit ultrices enim.
+24,4,Aurilia,Getty,agettyn@blogs.com,493-962-6823,Al Jumaylīyah,Roombo,10/31/54,4/20/25,9.1,Curabitur gravida nisi at nibh.
+25,10,Percy,Oneill,poneillo@google.com,926-342-1195,Kampungladang,Layo,3/22/80,4/23/25,8.5,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+26,10,Micah,Maplesden,mmaplesdenp@4shared.com,900-216-5201,Alupay,Agivu,5/18/68,4/23/25,9.5,Sed sagittis.
+27,1,Georgianna,Hawtin,ghawtinq@mit.edu,231-295-9951,Maykor,Brainverse,12/25/83,4/25/25,3.2,Nulla facilisi.
+28,7,Johnathon,Housaman,jhousamanr@jiathis.com,651-872-6356,Chyňava,Edgeclub,11/8/85,4/22/25,8.6,Quisque porta volutpat erat.
+29,4,Crystie,Mountstephen,cmountstephens@businesswire.com,813-637-3214,Shirochanka,Cogidoo,10/3/82,4/20/25,0.1,Etiam pretium iaculis justo.
+30,5,Darya,Diack,ddiackt@vkontakte.ru,630-437-1199,Cali,Abatz,9/21/80,4/23/25,2.5,Etiam justo.
+31,11,Verile,Douty,vdoutyu@google.com,268-995-4141,Slobodka,Quinu,9/10/53,4/21/25,1.3,Aliquam sit amet diam in magna bibendum imperdiet.
+32,5,Clayson,Ickovits,cickovitsv@springer.com,998-401-0432,Diriá,Edgeblab,6/14/99,4/25/25,0.6,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
+33,1,Harry,Hinchshaw,hhinchshaww@geocities.jp,625-248-1960,Sumberan,Zooxo,11/13/02,4/24/25,2.2,Sed accumsan felis.
+34,8,Marna,Springthorp,mspringthorpx@imageshack.us,503-851-3205,Coronel,Dabvine,1/16/72,4/21/25,6.8,Aenean sit amet justo.
+35,6,Katinka,Dreghorn,kdreghorny@virginia.edu,913-951-9438,Qiandong,Latz,2/16/90,4/23/25,0.2,Vivamus in felis eu sapien cursus vestibulum.
+36,4,Brock,Ivanitsa,bivanitsaz@ovh.net,818-900-0557,Dois Córregos,BlogXS,12/6/86,4/23/25,1.0,Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.
+37,3,Aubrey,Vicarey,avicarey10@nasa.gov,567-810-4461,Dongjie,Browseblab,4/6/52,4/25/25,5.0,Aliquam erat volutpat.
+38,2,Gustavus,Bever,gbever11@weibo.com,702-192-4344,Konstantinovsk,Eare,6/26/99,4/20/25,1.3,Nulla tellus.
+39,2,Wolfgang,Peter,wpeter12@privacy.gov.au,404-655-7696,Gimcheon,Topicshots,7/12/65,4/25/25,7.8,Nullam porttitor lacus at turpis.
+40,2,Davon,Bygreaves,dbygreaves13@mapquest.com,544-962-6793,Kishorganj,Jatri,3/26/70,4/22/25,7.9,Integer a nibh.
+41,5,Victor,Adrienne,vadrienne14@sphinn.com,807-490-4410,Babice,Linktype,7/27/64,4/25/25,1.1,Morbi non quam nec dui luctus rutrum.
+42,4,Constantia,Edridge,cedridge15@4shared.com,112-336-4165,Pleven,Quimm,10/20/58,4/23/25,5.7,In hac habitasse platea dictumst.
+43,10,Annabelle,Rushmere,arushmere16@census.gov,246-608-9468,Nanto-shi,Jabbercube,2/1/58,4/25/25,5.6,In quis justo.
+44,1,Lorelle,Wearn,lwearn17@un.org,118-308-9383,Kuma,Devcast,3/30/53,4/21/25,6.7,Integer tincidunt ante vel ipsum.
+45,1,Bernadine,Fallon,bfallon18@ow.ly,264-771-3454,Caracal,Livefish,7/10/64,4/21/25,7.8,Ut at dolor quis odio consequat varius.
+46,4,Merrill,Oldroyde,moldroyde19@google.com.au,567-966-8930,Taznakht,Zoonder,2/14/68,4/22/25,8.2,Maecenas rhoncus aliquam lacus.
+47,11,Arin,De-Ville,adeville1a@dmoz.org,343-179-3263,Kototujuh,Meetz,12/10/57,4/20/25,8.2,"Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci."
+48,6,Wandis,Machon,wmachon1b@census.gov,311-960-8587,Pulosari,Edgeclub,11/21/67,4/25/25,4.1,Donec quis orci eget orci vehicula condimentum.
+49,7,Doralyn,MacKay,dmackay1c@jigsy.com,947-917-1243,Borzęta,Myworks,6/28/74,4/24/25,3.4,Duis mattis egestas metus.
+50,7,Tami,Mariaud,tmariaud1d@diigo.com,402-557-2658,Omaha,Wikivu,5/24/86,4/22/25,9.6,Proin at turpis a pede posuere nonummy.
