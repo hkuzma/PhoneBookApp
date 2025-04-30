@@ -8,32 +8,85 @@
 
 <!-- The content is wrapped inside a column with specific Bootstrap classes for styling -->
   <!-- A lead paragraph with some text -->
-   <div class = "header">
-        <a href = "/Welcome">PhoneBook<a>
-   </div>
-   <div class = "all">
-        <div class = "sidebar">
-            <div>
-                <p>Welcome {{username}}<p>
-                </div>
-        </div>
-        <div class = "container">
-            <div class= "boxholder">
-                <a href = "/Contacts">Contacts</a>
-                <div class = "welcomebox">
-                    <p>{{contacts}}</p>
-                </div>
-            </div>
-            <div class = "boxholder">
-                <a href = "/Birthdays">Birthdays</a>
-                <div class = "welcomebox">
-                    <input type = "date"></input>
-                </div>
-            </div>
-        </div>
-        
+  <div class="header">
+    <a href="/Welcome">PhoneBook</a>
+</div>
+<div class="all">
+    <div class="sidebar">
+        <p>Welcome {{username}}</p>
     </div>
 
+    <div class="container">
+        <!-- Contacts Section -->
+        <div class="boxholder">
+            <a href="/Contacts">Contacts</a>
+            <div class="welcomebox">
+                <p>{{contacts}}</p>
+            </div>
+        </div>
 
-<!-- End of content block -->
+        <!-- Birthdays Section -->
+        <div class="boxholder">
+            <a href="/Birthdays">Birthdays</a>
+            <div class="welcomebox">
+                <input type="date" />
+            </div>
+        </div>
+
+        <!-- Add New Contact Section -->
+        <div class="boxholder">
+            <h4>Add New Contact</h4>
+            <div class="welcomebox">
+                <form method="POST" action="/add_contact">
+                    <div class="form-group">
+                        <label for="first_name">First Name*</label>
+                        <input type="text" name="first_name" id="first_name" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="last_name">Last Name*</label>
+                        <input type="text" name="last_name" id="last_name" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone*</label>
+                        <input type="tel" name="phone" id="phone" class="form-control" required pattern="[0-9]{10}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="relationship_context">Relationship Context*</label>
+                        <input type="text" name="relationship_context" id="relationship_context" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="residence">Residence</label>
+                        <input type="text" name="residence" id="residence" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" name="company" id="company" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birthday">Birthday</label>
+                        <input type="date" name="birthday" id="birthday" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="added_date">Date Added</label>
+                        <input type="date" name="added_date" id="added_date" class="form-control" value="{{ current_date }}">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mt-2">Add Contact</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

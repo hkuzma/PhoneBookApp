@@ -5,14 +5,7 @@ import random
 from datetime import datetime, timedelta
 import datetime
 
-
-def add_item(item):
-    con = sqlite3.connect('PhoneBook.db')
-    cursor = con.cursor()
-    
-    con.commit()
-    con.close()
-    
+# gets specific column from user    
 def get_info_item(USER, item):
     con = sqlite3.connect('PhoneBook.db')
     cur = con.cursor()
