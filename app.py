@@ -54,7 +54,48 @@ def get_contacts(user):
     
     return contacts
 
-    
+# Add a contact
+def add_contact(user_id):
+    print("Add New Contact:")
+    first = input("First Name: ")
+    last = input("Last Name: ")
+    phone = input("Phone Number: ")
+    email = input("Email: ")
+
+    con = sqlite3.connect('Phonebook.db')
+    cursor = con.cursor()
+    cursor.execute("INSERT INTO Contact_Info (user_id, first_name, last_name, phone, email) VALUES (?, ?, ?, ?, ?)",
+                   (user_id, first, last, phone, email))
+    con.commit()
+    con.close()
+    print("Contact added!\n")
+
+# Edit a contact
+def edit_contact(user_id):
+    contact_id = input("Enter the Contact ID to edit: ")
+    field = input("Field to update (first_name, last_name, phone, email): ")
+    if field not in ['first_name', 'last_name', 'phone', 'email']:
+        print("Invalid field.")
+        return
+    new_val = input(f"Enter new value for {field}: ")
+
+    con = sqlite3.connect('Phonebook.db')
+    cursor = con.cursor()
+    cursor.execute(f"UPDATE Contact_Info SET {field} = ? WHERE contact_id = ? AND user_id = ?", (new_val, contact_id, user_id))
+    con.commit()
+    con.close()
+    print("Contact updated!\n")
+
+# Delete a contact
+def delete_contact(user_id):
+    contact_id = input("Enter the Contact ID to delete: ")
+
+    con = sqlite3.connect('Phonebook.db')
+    cursor = con.cursor()
+    cursor.execute("DELETE FROM Contact_Info WHERE contact_id = ? AND user_id = ?", (contact_id, user_id))
+    con.commit()
+    con.close()
+    print("Contact deleted!\n")    
             
             
 
