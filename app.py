@@ -16,7 +16,7 @@ def add_item(item):
 def get_info_item(USER, item):
     con = sqlite3.connect('PhoneBook.db')
     cur = con.cursor()
-    email = cur.execute(f"SELECT {item} FROM Users WHERE user_id = '{USER}'").fetchall()
+    email = cur.execute(f"SELECT {item} FROM Users WHERE user_id = {USER}").fetchall()
     con.close()
     return email[0][0]
 
@@ -50,7 +50,7 @@ def check_user(user_name, password):
 def get_contacts(user):
     con = sqlite3.connect('Phonebook.db')
     cur = con.cursor()
-    contacts = cur.execute(f"SELECT * FROM Contact_Info WHERE user_id == '{user}' ").fetchall()
+    contacts = cur.execute(f"SELECT * FROM Contact_Info WHERE user_id == {user} ").fetchall()
     
     return contacts
 
@@ -92,9 +92,10 @@ def Welcome():
     user_id = session.get('user_id')
     print(user_id)
     username = get_info_item(user_id, 'first_name')
+    contacts = get_contacts(user_id)
     
     if user_id:
-        return render_template("Welcome.html", user_id=user_id, username=username)
+        return render_template("Welcome.html", user_id=user_id, username=username, contacts=contacts)
     return render_template("Welcome.html")
 
 @app.route("/Contacts")
