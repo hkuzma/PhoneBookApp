@@ -9,6 +9,8 @@ import datetime
 def add_item(item):
     con = sqlite3.connect('PhoneBook.db')
     cursor = con.cursor()
+
+    #CODE HERE///
     
     con.commit()
     con.close()
@@ -16,9 +18,9 @@ def add_item(item):
 def get_info_item(USER, item):
     con = sqlite3.connect('PhoneBook.db')
     cur = con.cursor()
-    email = cur.execute(f"SELECT {item} FROM Users WHERE user_id = {USER}").fetchall()
+    info_item = cur.execute(f"SELECT {item} FROM Users WHERE user_id = {USER}").fetchall()
     con.close()
-    return email[0][0]
+    return info_item[0][0]
 
 
 def query_items(search):
@@ -93,9 +95,11 @@ def Welcome():
     print(user_id)
     username = get_info_item(user_id, 'first_name')
     contacts = get_contacts(user_id)
+    js_contacts = [list(contact) for contact in contacts]
+
     
     if user_id:
-        return render_template("Welcome.html", user_id=user_id, username=username, contacts=contacts)
+        return render_template("Welcome.html", user_id=user_id, username=username, contacts=contacts, js_contacts=js_contacts)
     return render_template("Welcome.html")
 
 @app.route("/Contacts")
@@ -104,6 +108,8 @@ def Contacts():
     contacts = get_contacts(user_id)
     
     return render_template("Contacts.html", user_id=user_id, contacts=contacts)
+
+
 
     
 

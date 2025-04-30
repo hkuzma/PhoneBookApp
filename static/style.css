@@ -38,14 +38,39 @@ body{
 .welcomebox{
     margin-top: 1vw;
     height:20vw;
+    
+    overflow:scroll;
+    border-radius: 2vh;
     background-color: white;
     border: double 10px black;
+}
+.expandedContact{
+    background-color: white;
+    width:15vw;
+    height:15vw;
+    position: absolute;
+    left:35vw;
+    top:32.5vw;
+}
+  
 
-    border-radius: 2vh;
+.photo{
+    width:5vw;
+    height:5vw;
+    border-radius: 50%;
 }
 label, a{
     font-size: x-large;
     text-decoration: underline;
+}
+.contact:hover{
+    box-shadow: 10px      10px      20px   0       black;   
+}
+.contact:{
+    width:50vw;
+    height:50vw;
+    background-color: blue;
+
 }
 /*LANDING PAGE===================================================================================*/
 

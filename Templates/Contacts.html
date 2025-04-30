@@ -18,6 +18,26 @@
             <div class = "boxholder">
                 <a href = "/Contacts">Contacts</a>
                 <div class = "welcomebox">
+                    <table>
+                        <tr>
+                            <td>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+                            <td>Email</td>
+                            <td>Phone&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+                            <td>Description</td>
+                            <td>Residence&nbsp;&nbsp;&nbsp;</td>
+                            <td>Company</td> 
+                        </tr>
+                        {% for i in range(0, contacts|length) %}
+                        <tr class = "contact">
+                            <td>{{contacts[i][2]}}&nbsp;{{contacts[i][3]}}</td>
+                            {%for j in range(4,contacts[i]|length)%}
+                                
+                                <td>{{contacts[i][j]}}</td>
+                            {%endfor%}
+                        </tr>
+                        {%endfor%}
+
+                    </table>
 
                 </div>
             </div>       

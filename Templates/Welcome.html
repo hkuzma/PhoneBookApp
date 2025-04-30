@@ -8,20 +8,33 @@
 
 <!-- The content is wrapped inside a column with specific Bootstrap classes for styling -->
   <!-- A lead paragraph with some text -->
+    <script>
+        const jscontacts = {{js_contacts | tojson}}
+    </script>   
    <div class = "header">
-        <a href = "/Welcome">PhoneBook<a>
+        <a href = "/Welcome">PhoneBook</a>
    </div>
    <div class = "all">
         <div class = "sidebar">
             <div>
-                <p>Welcome {{username}}<p>
+                <p>Welcome {{username}}</p>
                 </div>
         </div>
-        <div class = "container">
+        <div class = "container" id = "container">
             <div class= "boxholder">
                 <a href = "/Contacts">Contacts</a>
                 <div class = "welcomebox">
-                    <p>{{contacts}}</p>
+                    <table>
+                        {% for i in range(0, contacts|length) %}
+                        <tr class="contact" onclick="toggle(jscontacts[{{i}}])">
+                            <td>                            
+                                <img class = "photo" src = "../static/empty-profile-grey.jpg"></img>
+                                {{contacts[i][2]}}&nbsp;{{contacts[i][3]}}
+                            </td>
+                        </tr>
+                        {%endfor%}
+
+                    </table>
                 </div>
             </div>
             <div class = "boxholder">
@@ -30,10 +43,11 @@
                     <input type = "date"></input>
                 </div>
             </div>
+
+            
         </div>
         
     </div>
-
 
 <!-- End of content block -->
 {% endblock %}

@@ -54,5 +54,78 @@
     </main>
     <!-- Additional footer content can be added using the block tag (I don't have one)-->
     {% block footer %}{% endblock %}
+
+    <script>
+      function toggle(contact){
+          const existingDiv = document.getElementById('expandedContact');
+          if (existingDiv) {
+            existingDiv.remove();
+          }
+
+
+          
+
+
+          const div = document.createElement("div");
+
+          div.id = 'expandedContact';
+
+          document.getElementById("container").appendChild(div)
+          div.style.background = 'white';
+          div.style.width = "25vw";
+          div.style.height = "25vw";
+          div.style.position = "absolute";
+          div.style.left = "35vw";
+          div.style.top = "32.5vh";
+          div.style.border = " double 10px black";
+          div.style.overflow = "scroll";
+
+          const table = document.createElement('table');
+          table.id = "table"
+
+          const labels = [
+          "First_Name",
+          "Last_Name",
+          "Email",         
+          "Phone",         
+          "Notes",          
+          "City",          
+          "Company",       
+          "Birthday"]
+
+          console.log(contact);
+          console.log(contact[3]);
+
+
+
+          for(let i=2;i < contact.length; i++){
+
+
+            const tr = document.createElement('tr')
+
+
+            const labelCell = document.createElement('td');
+            labelCell.innerText = labels[i - 2];
+            labelCell.style.fontWeight = 'bold';
+            labelCell.style.padding = '4px';
+
+            const value = document.createElement('td');
+            value.innerText = contact[i];
+            value.style.padding = '4px';
+            
+            tr.appendChild(labelCell);
+            tr.appendChild(value);   
+            table.appendChild(tr);     
+
+          }
+
+          div.appendChild(table);
+
+
+          
+  
+      }
+    </script>
+   
   </body>
 </html>
