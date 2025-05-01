@@ -56,15 +56,17 @@
     {% block footer %}{% endblock %}
 
     <script>
-      function toggle(contact){
-          const existingDiv = document.getElementById('expandedContact');
-          if (existingDiv) {
-            existingDiv.remove();
-          }
+      var lastContact = 'z';
+      function toggle(contact, i){
+        const existingDiv = document.getElementById('expandedContact');
+        if (existingDiv) {
+          existingDiv.remove();
+        }
+
 
 
           
-
+        if(lastContact != i){
 
           const div = document.createElement("div");
 
@@ -120,6 +122,14 @@
           }
 
           div.appendChild(table);
+
+          lastContact = i;
+
+
+        }else{
+          lastContact = 'z';
+        }
+
 
 
           

@@ -25,7 +25,7 @@
                     <table>
                         {% for i in range(0, contacts|length) %}
                         <tr>
-                            <td  class="contact" onclick="toggle(jscontacts[{{i}}])">                            
+                            <td  class="contact" onclick="toggle(jscontacts[{{i}}], {{i}})">                            
                                 <img class = "photo" src = "../static/empty-profile-grey.jpg"></img>
                                 {{contacts[i][2]}}&nbsp;{{contacts[i][3]}}
                             </td>
