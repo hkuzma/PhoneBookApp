@@ -24,11 +24,14 @@
                 <div class = "welcomebox">
                     <table>
                         {% for i in range(0, contacts|length) %}
-                        <tr class="contact" onclick="toggle(jscontacts[{{i}}])">
-                            <td>                            
+                        <tr>
+                            <td  class="contact" onclick="toggle(jscontacts[{{i}}])">                            
                                 <img class = "photo" src = "../static/empty-profile-grey.jpg"></img>
                                 {{contacts[i][2]}}&nbsp;{{contacts[i][3]}}
                             </td>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>
+                                <button>Edit Contact</button>
                         </tr>
                         {%endfor%}
 
