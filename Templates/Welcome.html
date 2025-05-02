@@ -33,9 +33,9 @@
                                 </form>                            
                             </td>
                             <td>
-                                <form action="/Remove ">
+                                <form method="POST" action="/Remove/{{ contacts[i][0] }}">
                                     <input type="submit" value="Remove Contact" />
-                                </form>                            
+                                </form>                           
                             </td>
                         </tr>
                         {%endfor%}

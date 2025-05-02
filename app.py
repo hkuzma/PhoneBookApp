@@ -342,7 +342,21 @@ def add_contact():
     # Redirect back to the welcome page after adding the contact
     return redirect(url_for('Welcome'))
 
+@app.route('/Remove/<int:contact_id>', methods=['POST'])
+def remove_contact(contact_id):
+    if 'user_id' not in session:
+        return redirect('/')
     
+    user_id = session['user_id']
+    con = sqlite3.connect('PhoneBook.db')
+    cur = con.cursor()
+
+    # Only delete if this contact belongs to the current user
+    cur.execute("DELETE FROM Contact_Info WHERE contact_id = ? AND user_id = ?", (contact_id, user_id))
+    con.commit()
+    con.close()
+
+    return redirect('/Welcome') 
 
 # class Item(db.Model):
 #     __tablename__ = "Item"
