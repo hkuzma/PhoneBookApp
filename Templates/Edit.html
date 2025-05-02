@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+<!-- This is how we fill the Title Block of our base html -->
+{% block title %}Contacts{% endblock %}
+
+<!-- TThis is how we fill the Content Block of our base html -->
+{% block content %}
+
+<!-- The content is wrapped inside a column with specific Bootstrap classes for styling -->
+  <!-- A lead paragraph with some text -->
+   <div class = "header">
+    <a href = "/Welcome">PhoneBook<a>
+    </div>
+    <div class = "all">
+        <div class = "sidebar">
+        </div>
+        <div class = "container">
+            <div class = "boxholder">
+                <a href = "/Contacts">Contacts</a>
+                <div class = "welcomebox">
+                    <table>
+                        <tr>
+                            <td>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+                            <td>Email</td>
+                            <td>Phone&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+                            <td>Description</td>
+                            <td>Residence&nbsp;&nbsp;&nbsp;</td>
+                            <td>Company</td> 
+                        </tr>
+                            
+                       
+                    </table>
+
+                </div>
+            </div>       
+        </div>
+    </div>
+
+
+<!-- End of content block -->
+{% endblock %}
