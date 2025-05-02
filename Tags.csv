@@ -1,51 +1,51 @@
-contact_id,tag_id,tag
-11,1,Concept HDL
-3,2,BBQ
-8,3,FSC Certification
-11,4,CSAT
-2,5,HSQLDB
-6,6,QA Automation
-2,7,Job Search Strategies
-7,8,Utility Systems
-10,9,Music Industry
-11,10,Switching
-3,11,IOS Firewall
-4,12,LMDS
-1,13,QADirector
-10,14,Applied Kinesiology
-3,15,PTF
-8,16,Kinesiology
-3,17,Myriad
-2,18,QPSK
-7,19,Testing
-2,20,Keil
-11,21,Bass Guitar
-3,22,People Management
-2,23,Omegamon
-2,24,Ethical Hacking
-1,25,OO Software Development
-9,26,JMeter
-3,27,Eye Treatments
-5,28,BOSIET
-8,29,AXE
-4,30,HDCAM
-8,31,Receptionist Duties
-6,32,SharePoint
-8,33,SVT
-1,34,Time Management
-11,35,Tubing
-5,36,RPG II
-11,37,Switchboard
-7,38,OTN
-1,39,Organic Chemistry
-5,40,RSLinx
-11,41,PyGTK
-3,42,Personal Development
-1,43,Assessment Center
-3,44,PTW
-9,45,FX Hedging
-11,46,Metal Fabrication
-9,47,HDI Support Center Analyst
-2,48,Theory
-7,49,FCPA
-2,50,OTN
+tag_id,contact_id,user_id,tag
+1,11,4,Concept HDL
+2,3,10,BBQ
+3,8,3,FSC Certification
+4,11,3,CSAT
+5,2,11,HSQLDB
+6,6,5,QA Automation
+7,2,7,Job Search Strategies
+8,7,8,Utility Systems
+9,10,5,Music Industry
+10,11,5,Switching
+11,3,3,IOS Firewall
+12,4,4,LMDS
+13,1,2,QADirector
+14,10,10,Applied Kinesiology
+15,3,3,PTF
+16,8,3,Kinesiology
+17,3,7,Myriad
+18,2,10,QPSK
+19,7,9,Testing
+20,2,10,Keil
+21,11,9,Bass Guitar
+22,3,5,People Management
+23,2,7,Omegamon
+24,2,9,Ethical Hacking
+25,1,7,OO Software Development
+26,9,10,JMeter
+27,3,6,Eye Treatments
+28,5,6,BOSIET
+29,8,8,AXE
+30,4,1,HDCAM
+31,8,8,Receptionist Duties
+32,6,5,SharePoint
+33,8,1,SVT
+34,1,9,Time Management
+35,11,11,Tubing
+36,5,6,RPG II
+37,11,10,Switchboard
+38,7,7,OTN
+39,1,5,Organic Chemistry
+40,5,11,RSLinx
+41,11,2,PyGTK
+42,3,6,Personal Development
+43,1,10,Assessment Center
+44,3,11,PTW
+45,9,9,FX Hedging
+46,11,8,Metal Fabrication
+47,9,5,HDI Support Center Analyst
+48,2,4,Theory
+49,7,3,FCPA
+50,2,6,OTN

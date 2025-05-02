@@ -49,7 +49,7 @@ df_contacts.to_sql("Users", con, if_exists='append', index=False)
 # Create Contact_Info table
 create_table = '''
 CREATE TABLE Contact_Info (
-    'contact_id',
+    'contact_id' INTEGER PRIMARY KEY AUTOINCREMENT,
     'user_id',
     'first_name',
     'last_name',
@@ -94,8 +94,9 @@ df_contacts.to_sql("Posts", con, if_exists='append', index=False)
 # Create Tags table
 create_table = '''
 CREATE TABLE Tags (
+    'tag_id' INTEGER PRIMARY KEY AUTOINCREMENT,
     'contact_id',
-    'tag_id',
+    'user_id',
     'tag',
     FOREIGN KEY(contact_id) REFERENCES Contact_Info(contact_id)
 )'''

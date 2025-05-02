@@ -177,7 +177,44 @@ def Contacts():
     
     return render_template("Contacts.html", user_id=user_id, contacts=contacts)
 
+@app.route('/add_contact', methods=['POST'])
+def add_contact():
+    # Extract form data
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    email = request.form.get('email', None)
+    phone = request.form['phone']
+    relationship_context = request.form['relationship_context']
+    residence = request.form.get('residence', None)
+    company = request.form.get('company', None)
+    birthday = request.form.get('birthday', None)
+    friendship_score = request.form.get('friendship_score', None)
+    
+    # Get today's date in m/d/y format
+    added_date = datetime.datetime.now().strftime('%-m/%-d/%Y')
 
+    # User ID from session (assuming a logged-in user)
+    user_id = session.get('user_id')
+
+    # Insert into database
+    con = sqlite3.connect('PhoneBook.db')
+    cursor = con.cursor()
+
+    cursor.execute('''
+        INSERT INTO Contact_Info (
+            user_id, first_name, last_name, email, phone, relationship_context,
+            residence, company, birthday, added_date, friendship_score
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ''', (
+        user_id, first_name, last_name, email, phone, relationship_context,
+        residence, company, birthday, added_date, friendship_score
+    ))
+
+    con.commit()
+    con.close()
+
+    # Redirect back to the welcome page after adding the contact
+    return redirect(url_for('Welcome'))
 
     
 
