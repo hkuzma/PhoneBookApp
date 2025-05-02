@@ -1,127 +1,149 @@
 {% extends 'base.html' %}
 
-<!-- This is how we fill the Title Block of our base html -->
 {% block title %}Welcome{% endblock %}
 
-<!-- TThis is how we fill the Content Block of our base html -->
 {% block content %}
-
-<!-- The content is wrapped inside a column with specific Bootstrap classes for styling -->
-  <!-- A lead paragraph with some text -->
-    <script>
-        const jscontacts = {{js_contacts | tojson}}
-    </script>   
+  <script>
+      const jscontacts = {{ js_contacts | tojson }};
+  </script>   
   <div class="header">
     <a href="/Welcome">PhoneBook</a>
-</div>
-<div class="all">
+  </div>
+  <div class="all">
     <div class="sidebar">
-        <p>Welcome {{username}}</p>
+        <p>Welcome {{ username }}</p>
     </div>
-        <div class = "container" id = "container">
-            <div class= "boxholder">
-                <a href = "/Contacts">Contacts</a>
-                <div class = "welcomebox">
-                    <table>
-                        {% for i in range(0, contacts|length) %}
-                        <tr>
-                            <td  class="contact" onclick="toggle(jscontacts[{{i}}], {{i}})">                            
-                                <img class = "photo" src = "../static/empty-profile-grey.jpg"></img>
-                                {{contacts[i][2]}}&nbsp;{{contacts[i][3]}}
-                            </td>
-                            <td>&nbsp;&nbsp;</td>
-                            <td>
-                                <button>Edit Contact</button>
-                        </tr>
-                        {%endfor%}
-
-                    </table>
-                </div>
-
-        <!-- Birthdays Section -->
-        <div class="boxholder">
-            <a href="/Birthdays">Birthdays</a>
-            <div class="welcomebox">
-                <table>
-                    {%for i in range(0,todaybirthdays|length)%}
-                    <tr>
-                        <td class = "contact">
-                            <img class = "photo" src = "../static/empty-profile-grey.jpg"></img>
-                            {{todaybirthdays[i][2]}}&nbsp;{{todaybirthdays[i][3]}}'s birthday is today!
-                            <img class = "birthday" src = "../static/148-1484921_birthday-cake-emoji-de-torta-de-whatsapp.png"/>
-                        </td>
-                    </tr>
-                    {%endfor%}
-                    {%for i in range(0,upcomingbirthdays|length)%}
-                    <tr>
-                        <td class = "contact">
-                            <img class = "photo" src = "../static/empty-profile-grey.jpg"></img>
-                            {{upcomingbirthdays[i][2]}}&nbsp;{{upcomingbirthdays[i][3]}}'s birthday is coming up on {{upcomingbirthdays[i][9].split('/')[0]}}/{{upcomingbirthdays[i][9].split('/')[1]}}
-                        </td>
-                    </tr>
-                    {%endfor%}
-
-                </table>
-
-
-            </div>
+    <div class="container" id="container">
+      <div class="boxholder">
+        <a href="/Contacts">Contacts</a>
+        <div class="welcomebox">
+          <table>
+            {% for i in range(0, contacts|length) %}
+              <tr>
+                <td class="contact" onclick="toggle(jscontacts[{{ i }}], {{ i }})">                            
+                  <img class="photo" src="../static/empty-profile-grey.jpg"></img>
+                  {{ contacts[i][2] }}&nbsp;{{ contacts[i][3] }}
+                </td>
+                <td>&nbsp;&nbsp;</td>
+                <td>
+                  <button>Edit Contact</button>
+                </td>
+              </tr>
+            {% endfor %}
+          </table>
         </div>
+      </div>
 
-        <!-- Add New Contact Section -->
-        <div class="boxholder">
-            <h4>Add New Contact</h4>
-            <div class="welcomebox">
-                <form method="POST" action="/add_contact">
-                    <div class="form-group">
-                        <label for="first_name">First Name*</label>
-                        <input type="text" name="first_name" id="first_name" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="last_name">Last Name*</label>
-                        <input type="text" name="last_name" id="last_name" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Phone*</label>
-                        <input type="tel" name="phone" id="phone" class="form-control" required pattern="[0-9]{10}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="relationship_context">Relationship Context*</label>
-                        <input type="text" name="relationship_context" id="relationship_context" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="residence">Residence</label>
-                        <input type="text" name="residence" id="residence" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="company">Company</label>
-                        <input type="text" name="company" id="company" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="birthday">Birthday</label>
-                        <input type="date" name="birthday" id="birthday" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="friendship_score">Friendship Score (0.0–10.0)</label>
-                        <input type="number" name="friendship_score" id="friendship_score" class="form-control" min="0.0" max="10.0">
-                    </div>
-
-                    <button type="submit" class="btn btn-primary mt-2">Add Contact</button>
-                </form>
-            </div>
-
-            
+      <!-- Birthdays Section -->
+      <div class="boxholder">
+        <a href="/Birthdays">Birthdays</a>
+        <div class="welcomebox">
+          <table>
+            {% for i in range(0, todaybirthdays|length) %}
+              <tr>
+                <td class="contact">
+                  <img class="photo" src="../static/empty-profile-grey.jpg"></img>
+                  {{ todaybirthdays[i][2] }}&nbsp;{{ todaybirthdays[i][3] }}'s birthday is today!
+                  <img class="birthday" src="../static/148-1484921_birthday-cake-emoji-de-torta-de-whatsapp.png"/>
+                </td>
+              </tr>
+            {% endfor %}
+            {% for i in range(0, upcomingbirthdays|length) %}
+              <tr>
+                <td class="contact">
+                  <img class="photo" src="../static/empty-profile-grey.jpg"></img>
+                  {{ upcomingbirthdays[i][2] }}&nbsp;{{ upcomingbirthdays[i][3] }}'s birthday is coming up on {{ upcomingbirthdays[i][9].split('/')[0] }}/{{ upcomingbirthdays[i][9].split('/')[1] }}
+                </td>
+              </tr>
+            {% endfor %}
+          </table>
         </div>
+      </div>
+
+      <!-- Add New Contact Section -->
+      <div class="boxholder">
+        <h4>Add New Contact</h4>
+        <div class="welcomebox">
+          <form method="POST" action="/add_contact">
+            <div class="form-group">
+              <label for="first_name">First Name*</label>
+              <input type="text" name="first_name" id="first_name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="last_name">Last Name*</label>
+              <input type="text" name="last_name" id="last_name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone*</label>
+              <input type="tel" name="phone" id="phone" class="form-control" required pattern="[0-9]{10}">
+            </div>
+            <div class="form-group">
+              <label for="relationship_context">Relationship Context*</label>
+              <input type="text" name="relationship_context" id="relationship_context" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="residence">Residence</label>
+              <input type="text" name="residence" id="residence" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="company">Company</label>
+              <input type="text" name="company" id="company" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="birthday">Birthday</label>
+              <input type="date" name="birthday" id="birthday" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="friendship_score">Friendship Score (0.0–10.0)</label>
+              <input type="number" name="friendship_score" id="friendship_score" class="form-control" min="0.0" max="10.0">
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Add Contact</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Friendship Score Chart -->
+      <div class="boxholder">
+        <h4>Friendship Scores</h4>
+        <div class="welcomebox">
+          <canvas id="friendshipChart"></canvas>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+
+  <!-- Chart.js Script for rendering the Friendship Score chart -->
+  <script>
+      const jscontacts = {{ js_contacts | tojson }};
+      const labels = jscontacts.map(contact => contact[2] + ' ' + contact[3]);  // Assuming contact[2] is first_name, contact[3] is last_name
+      const friendshipScores = jscontacts.map(contact => contact[10]);  // Assuming contact[10] is the friendship_score column
+
+      const ctx = document.getElementById('friendshipChart').getContext('2d');
+      const friendshipChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: labels,
+              datasets: [{
+                  label: 'Friendship Score',
+                  data: friendshipScores,
+                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                  borderColor: 'rgba(75, 192, 192, 1)',
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true,
+                      max: 10
+                  }
+              }
+          }
+      });
+  </script>
+
 {% endblock %}

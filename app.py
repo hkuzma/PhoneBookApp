@@ -120,7 +120,13 @@ def delete_contact(user_id):
     con.close()
     print("Contact deleted!\n")    
             
-            
+def get_contacts_by_score(user_id):
+    con = sqlite3.connect('PhoneBook.db')
+    cur = con.cursor()
+    # Ensure contacts are ordered by friendship_score in descending order
+    contacts = cur.execute(f"SELECT * FROM Contact_Info WHERE user_id = ? ORDER BY friendship_score DESC", (user_id,)).fetchall()
+    con.close()
+    return contacts            
 
 
 app = Flask(__name__)
@@ -152,22 +158,23 @@ def submit():
 
 @app.route("/Welcome")
 def Welcome():
-    
     user_id = session.get('user_id')
-    print(user_id)
-    username = get_info_item(user_id, 'first_name')
-    contacts = get_contacts(user_id)
-    
-    birthday_info = get_birthdays(contacts)
-    
-    upcomingbirthdays = birthday_info[0]
-    todaybirthdays = birthday_info[1]
-    
-    js_contacts = [list(contact) for contact in contacts]
-
-    
     if user_id:
-        return render_template("Welcome.html", user_id=user_id, username=username, contacts=contacts, js_contacts=js_contacts, upcomingbirthdays=upcomingbirthdays, todaybirthdays=todaybirthdays)
+        contacts = get_contacts_by_score(user_id)  # Fetch contacts sorted by friendship_score
+        birthday_info = get_birthdays(contacts)
+        upcomingbirthdays = birthday_info[0]
+        todaybirthdays = birthday_info[1]
+        
+        # Prepare data for JS chart
+        js_contacts = [list(contact) for contact in contacts]
+
+        return render_template("Welcome.html", 
+                               user_id=user_id, 
+                               username=get_info_item(user_id, 'first_name'),
+                               contacts=contacts, 
+                               js_contacts=js_contacts, 
+                               upcomingbirthdays=upcomingbirthdays, 
+                               todaybirthdays=todaybirthdays)
     return render_template("Welcome.html")
 
 @app.route("/Contacts")
