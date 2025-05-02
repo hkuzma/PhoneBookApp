@@ -13,6 +13,9 @@ def get_info_item(USER, item):
     con.close()
     return info_item[0][0]
     
+# def remove_contact(USER, CONTACT):
+
+    
 
 
 def query_items(search):
@@ -40,7 +43,7 @@ def get_birthdays(contacts):
         contactyear = int(contact[9].split('/')[2])
         
         if contactmonth == month:
-            if contactday-7<day:
+            if contactday-7<day and contactday >= day:
                 if contactday == day:
                     birthday.append((contact))
                 else:
@@ -94,20 +97,36 @@ def add_contact(user_id):
     print("Contact added!\n")
 
 # Edit a contact
-def edit_contact(user_id):
-    contact_id = input("Enter the Contact ID to edit: ")
-    field = input("Field to update (first_name, last_name, phone, email): ")
-    if field not in ['first_name', 'last_name', 'phone', 'email']:
-        print("Invalid field.")
-        return
-    new_val = input(f"Enter new value for {field}: ")
-
+    
+def edit_contact(USER, CONTACT, firstname, lastname, email, phone, residence, company, birthday, score, description):
     con = sqlite3.connect('Phonebook.db')
     cursor = con.cursor()
-    cursor.execute(f"UPDATE Contact_Info SET {field} = ? WHERE contact_id = ? AND user_id = ?", (new_val, contact_id, user_id))
+    if birthday != "":
+        cursor.execute(f'''UPDATE Contact_Info SET 
+                        first_name = ?, 
+                        last_name = ?, 
+                        email = ?, 
+                        phone = ?, 
+                        residence = ?, 
+                        company = ?, 
+                        birthday = ?, 
+                        friendship_score = ?,
+                        relationship_context = ?
+                        WHERE contact_id = ? AND user_id = ?''', (firstname, lastname, email, phone, residence, company, birthday, score, description, CONTACT, USER))
+    else:
+        cursor.execute(f'''UPDATE Contact_Info SET 
+                        first_name = ?, 
+                        last_name = ?, 
+                        email = ?, 
+                        phone = ?, 
+                        residence = ?, 
+                        company = ?, 
+                        friendship_score = ?,
+                        relationship_context = ?
+                        WHERE contact_id = ? AND user_id = ?''', (firstname, lastname, email, phone, residence, company, score, description, CONTACT, USER))
     con.commit()
     con.close()
-    print("Contact updated!\n")
+    
 
 # Delete a contact
 def delete_contact(user_id):
@@ -134,6 +153,75 @@ def login():
     
     return render_template("landing.html")
 
+@app.route("/Edit/<int:contact_id>")
+def edit(contact_id):
+    # render_template("Edit.html")
+    user_id = session.get('user_id')
+    username = get_info_item(user_id, 'first_name')
+    contacts = get_contacts(user_id)
+    contact = contacts[contact_id]
+    
+    birthday_info = get_birthdays(contacts)
+    
+    upcomingbirthdays = birthday_info[0]
+    todaybirthdays = birthday_info[1]
+    
+    js_contacts = [list(contact) for contact in contacts]
+
+    return render_template("Edit.html", user_id=user_id, username=username, contact=contact, js_contacts=js_contacts, upcomingbirthdays=upcomingbirthdays, todaybirthdays=todaybirthdays)
+
+@app.route("/SubmitContact/<int:contact_id>", methods=['GET','POST'])
+def submitContact(contact_id):
+    
+    user_id = session.get('user_id')
+
+    
+    first = request.form['first']
+    last =  request.form['last']
+    email = request.form['email']
+    phone = request.form['phone']
+    residence = request.form['residence']
+    company = request.form['company']
+    birthday = request.form['birthday']
+    score = request.form['friendshipscore']
+    description = request.form['description']
+    
+    if birthday != "":
+        yearhold = str(birthday).split('-')[0]
+        
+        year = yearhold[2]
+        year += yearhold[3]
+        year = int(year)
+        month = int(str(birthday).split('-')[1])
+        day = int(str(birthday).split('-')[2].split(' ')[0])
+        
+        birthday = str(month)
+        birthday += "/"
+        birthday += str(day)
+        birthday += "/"
+        birthday += str(year)
+        
+        
+    
+    edit_contact(user_id, contact_id, first, last, email, phone, residence, company, birthday, score, description)
+
+    
+    
+    
+    username = get_info_item(user_id, 'first_name')
+    contacts = get_contacts(user_id)
+    
+    birthday_info = get_birthdays(contacts)
+    
+    upcomingbirthdays = birthday_info[0]
+    todaybirthdays = birthday_info[1]
+    
+    js_contacts = [list(contact) for contact in contacts]
+    
+    return render_template("Welcome.html", user_id=user_id, username=username, contacts=contacts, js_contacts=js_contacts, upcomingbirthdays=upcomingbirthdays, todaybirthdays=todaybirthdays)
+
+    
+
 @app.route("/Submit", methods=['GET', 'POST'])
 def submit():
     
@@ -154,7 +242,6 @@ def submit():
 def Welcome():
     
     user_id = session.get('user_id')
-    print(user_id)
     username = get_info_item(user_id, 'first_name')
     contacts = get_contacts(user_id)
     

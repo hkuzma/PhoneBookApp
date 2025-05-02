@@ -18,18 +18,73 @@
             <div class = "boxholder">
                 <a href = "/Contacts">Contacts</a>
                 <div class = "welcomebox">
-                    <table>
-                        <tr>
-                            <td>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-                            <td>Email</td>
-                            <td>Phone&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-                            <td>Description</td>
-                            <td>Residence&nbsp;&nbsp;&nbsp;</td>
-                            <td>Company</td> 
-                        </tr>
-                            
-                       
-                    </table>
+
+                    <form action="/SubmitContact/{{contact[0]}}" method="POST">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="first">FirstName:</label>
+                                    <input value="{{contact[2]}}" type="text" id="first" name="first">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="last">LastName:</label>
+                                    <input value="{{contact[3]}}" type="text" id="last" name="last">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="email">Email:</label>
+                                    <input value="{{contact[4]}}" type="text" id="email" name="email">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="phone">Phone:</label>
+                                    <input value="{{contact[5]}}" type="text" id="phone" name="phone">
+                                </td>
+                            </tr>
+                           
+                            <tr>
+                                <td>
+                                    <label for="residence">Residence:</label>
+                                    <input value="{{contact[6]}}" type="text" id="residence" name="residence">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="company">Company:</label>
+                                    <input value="{{contact[7]}}" type="text" id="company" name="company">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="birthday">Birthday:</label>
+                                    <input value="{{contact[8]}}" type="date" id="birthday" name="birthday">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="friendshipscore">Score:</label>
+                                    <input value="{{contact[10]}}" type="text" id="friendshipscore" name="friendshipscore">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="description">Description:</label>
+                                    <input value="{{contact[11]}}" type="text" id="description" name="description">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <button type="submit">Submit</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+
 
                 </div>
             </div>       

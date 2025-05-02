@@ -36,7 +36,8 @@ CREATE TABLE Users (
     'password',
     'account_created',
     'first_name',
-    'last_name'
+    'last_name',
+    PRIMARY KEY(user_id)
 )'''
 create_new_table("Users", create_table)
 
@@ -72,7 +73,7 @@ df_contacts = pd.read_csv("Contacts.csv")
 df_contacts.to_sql("Contact_Info", con, if_exists='append', index=False)
 
 # Create Posts table
-create_table = '''
+create_table = '''  
 CREATE TABLE Posts (
     'user_id',
     'contact_id',
@@ -95,9 +96,11 @@ df_contacts.to_sql("Posts", con, if_exists='append', index=False)
 create_table = '''
 CREATE TABLE Tags (
     'contact_id',
+    'user_id',
     'tag_id',
     'tag',
     FOREIGN KEY(contact_id) REFERENCES Contact_Info(contact_id)
+    FOREIGN KEY(user_id) REFERENCES Users(user_id)
 )'''
 create_new_table("Tags", create_table)
 

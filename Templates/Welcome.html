@@ -31,7 +31,14 @@
                             </td>
                             <td>&nbsp;&nbsp;</td>
                             <td>
-                                <button>Edit Contact</button>
+                                <form action="/Edit/{{i}}">
+                                    <input type="submit" value="Edit Contact" />
+                                </form>                            
+                            </td>
+                            <td>
+                                <form action="/Remove ">
+                                    <input type="submit" value="Remove Contact" />
+                                </form>                            </td>
                         </tr>
                         {%endfor%}
 
