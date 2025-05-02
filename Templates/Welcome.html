@@ -38,9 +38,9 @@
                                 </form>
                             </td>
                             <td>
-                                <form action="/Remove ">
+                                <form method="POST" action="/Remove/{{ contacts[i][0] }}">
                                     <input type="submit" value="Remove Contact" />
-                                </form>                            
+                                </form>                           
                             </td>
                             
                         </tr>
@@ -123,42 +123,11 @@
 
       <!-- Friendship Score Chart -->
       <div class="boxholder">
-        <h4>Friendship Scores</h4>
-        <div class="welcomebox">
-          <canvas id="friendshipChart"></canvas>
-        </div>
+        <h2>Friendship Score Chart</h2>
+        <img src="{{ url_for('chart') }}" alt="Friendship Score Chart">
       </div>
     </div>
   </div>
 
-  <!-- Chart.js Script for rendering the Friendship Score chart -->
-  <script>
-      const jscontacts = {{ js_contacts | tojson }};
-      const labels = jscontacts.map(contact => contact[2] + ' ' + contact[3]);  // Assuming contact[2] is first_name, contact[3] is last_name
-      const friendshipScores = jscontacts.map(contact => contact[10]);  // Assuming contact[10] is the friendship_score column
-
-      const ctx = document.getElementById('friendshipChart').getContext('2d');
-      const friendshipChart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-              labels: labels,
-              datasets: [{
-                  label: 'Friendship Score',
-                  data: friendshipScores,
-                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                  borderColor: 'rgba(75, 192, 192, 1)',
-                  borderWidth: 1
-              }]
-          },
-          options: {
-              scales: {
-                  y: {
-                      beginAtZero: true,
-                      max: 10
-                  }
-              }
-          }
-      });
-  </script>
 
 {% endblock %}

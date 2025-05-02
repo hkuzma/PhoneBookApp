@@ -1,9 +1,14 @@
-from flask import Flask, render_template, url_for, request, redirect, jsonify, session
+from flask import Flask, render_template, url_for, request, redirect, jsonify, session, send_file
 from flask_sqlalchemy import SQLAlchemy
 import sqlite3
 import random
 from datetime import datetime, timedelta
 import datetime
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+from io import BytesIO
 
 # gets specific column from user    
 def get_info_item(USER, item):
@@ -426,7 +431,61 @@ def add_post(contact_id):
 
     
 
+@app.route('/Remove/<int:contact_id>', methods=['POST'])
+def remove_contact(contact_id):
+    if 'user_id' not in session:
+        return redirect('/')
     
+    user_id = session['user_id']
+    con = sqlite3.connect('PhoneBook.db')
+    cur = con.cursor()
+
+    # Only delete if this contact belongs to the current user
+    cur.execute("DELETE FROM Contact_Info WHERE contact_id = ? AND user_id = ?", (contact_id, user_id))
+    con.commit()
+    con.close()
+
+    return redirect('/Welcome') 
+
+@app.route('/chart')
+def chart():
+    user_id = session.get('user_id')
+    if not user_id:
+        return redirect(url_for('landing'))
+
+    # Use non-GUI backend
+    import matplotlib
+    matplotlib.use('Agg')
+
+    # Connect and load friendship scores for user's contacts
+    con = sqlite3.connect('PhoneBook.db')
+    query = """
+        SELECT first_name || ' ' || last_name AS name, friendship_score
+        FROM Contact_Info
+        WHERE user_id = ?
+    """
+    contacts_df = pd.read_sql_query(query, con, params=(user_id,))
+    con.close()
+
+    # Clean and sort
+    contacts_df['friendship_score'] = pd.to_numeric(contacts_df['friendship_score'], errors='coerce')
+    contacts_df = contacts_df.dropna().sort_values(by='friendship_score', ascending=False)
+
+    # Create chart
+    sns.set(style="whitegrid")
+    plt.figure(figsize=(10, 6))
+    sns.barplot(x='friendship_score', y='name', data=contacts_df, palette='coolwarm')
+    plt.title('Your Contacts Ranked by Friendship Score')
+    plt.xlabel('Friendship Score')
+    plt.ylabel('Contact Name')
+    plt.tight_layout()
+
+    # Save chart to BytesIO and return as response
+    img = BytesIO()
+    plt.savefig(img, format='png')
+    img.seek(0)
+    plt.close()
+    return send_file(img, mimetype='image/png')
 
 # class Item(db.Model):
 #     __tablename__ = "Item"
