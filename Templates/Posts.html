@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+<!-- This is how we fill the Title Block of our base html -->
+{% block title %}Contacts{% endblock %}
+
+<!-- TThis is how we fill the Content Block of our base html -->
+{% block content %}
+
+<!-- The content is wrapped inside a column with specific Bootstrap classes for styling -->
+  <!-- A lead paragraph with some text -->
+   <div class = "header">
+    <a href = "/Welcome">PhoneBook<a>
+    </div>
+    <div class = "all">
+        <div class = "sidebar">
+        </div>
+
+        <div class = "container">
+
+            <div class = "boxholder">
+                <h1>Posts About {{contact[2]}} {{contact[3]}}</h1>
+
+                <div class = "welcomebox">
+
+                        <table>
+                            {%for i in range(0, posts|length)%}
+                            <tr>
+                                <td>Posted On {{posts[i][3]}}: {{posts[i][4]}}</td> 
+                                <td>
+                                    <form action="/Remove">
+                                        <input type="submit" value="Delete Post" />
+                                    </form>                            
+                                </td>
+                                <td>{{index}}</td>
+                            </tr>
+
+                            {%endfor%}
+                        </table>
+                </div>
+            </div>       
+     
+            <div class="boxholder">
+                <h4>Add New Contact</h4>
+                <div class="welcomebox">
+                <form method="POST" action="/add_post/{{index}}">
+                    <div class="form-group">
+                    <label for="post">Enter Post</label>
+                    <input type="text" name="post" id="post" class="form-control" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary mt-2">Create Post</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- End of content block -->
+{% endblock %}

@@ -22,7 +22,7 @@ body{
 .container{
     display: flex;
     justify-content: flex-start;
-    flex-direction: row;
+    flex-direction: column;
     padding-left: 2vw;
     padding-right:3vw;
     column-gap: 3vw;

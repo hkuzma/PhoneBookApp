@@ -79,6 +79,13 @@ def get_contacts(user):
     contacts = cur.execute(f"SELECT * FROM Contact_Info WHERE user_id == {user} ").fetchall()
     
     return contacts
+def get_posts(user, contact):
+    con = sqlite3.connect('Phonebook.db')
+    cur = con.cursor()
+    posts = cur.execute(f"SELECT * FROM Posts WHERE user_id == {user} AND contact_id == {contact} ").fetchall()
+    
+    return posts
+    
 
 # Add a contact
 def add_contact(user_id):
@@ -176,6 +183,33 @@ def edit(contact_id):
 
     return render_template("Edit.html", user_id=user_id, username=username, contact=contact, js_contacts=js_contacts, upcomingbirthdays=upcomingbirthdays, todaybirthdays=todaybirthdays)
 
+
+@app.route("/Posts/<int:contact_id>")
+def viewPosts(contact_id):
+    user_id = session.get('user_id')
+    
+    user_id = session.get('user_id')
+    username = get_info_item(user_id, 'first_name')
+    contacts = get_contacts(user_id)
+    contact = contacts[contact_id]
+    
+    posts = get_posts(user_id, contact_id)
+    
+    
+    
+    js_contacts = [list(contact) for contact in contacts]
+    print(contact_id)
+    print(f"VIEW CONTACT {contact}")
+    
+
+    
+    
+    return render_template("Posts.html", user_id=user_id, username=username, contact=contact, js_contacts=js_contacts, posts=posts, index=contact_id)
+
+    
+
+    
+    
 @app.route("/SubmitContact/<int:contact_id>", methods=['GET','POST'])
 def submitContact(contact_id):
     
@@ -341,6 +375,56 @@ def add_contact():
 
     # Redirect back to the welcome page after adding the contact
     return redirect(url_for('Welcome'))
+
+@app.route('/add_post/<int:contact_id>', methods =['POST'])
+def add_post(contact_id):
+    added_date = datetime.datetime.now()
+    
+    yearhold = str(added_date).split('-')[0]
+    print(yearhold)
+    year = yearhold[2]
+    year += yearhold[3]
+    year = year
+    month = str(added_date).split('-')[1]
+    day = str(added_date).split('-')[2].split(' ')[0]
+    
+    date = month
+    date += "/"
+    date+=day
+    date+= year
+    
+    user_id = session.get('user_id')
+
+    # post = request.form['post']
+    # con = sqlite3.connect('PhoneBook.db')
+    # cursor = con.cursor()
+    # cursor.execute('''
+    #     INSERT INTO Posts (
+    #         user_id, contact_id, date_posted, post_text, 
+    #     ) VALUES (?, ?, ?, ?)
+    # ''', (
+    #     user_id, contact_id, date, post))
+    # con.commit()
+    # con.close()
+    
+    contacts = get_contacts(user_id)
+    print(contacts)
+    print(contact_id)
+    contact = contacts[contact_id]
+    username = get_info_item(user_id, 'first_name')
+    
+    posts = get_posts(user_id, contact_id)
+    
+        
+    js_contacts = [list(contact) for contact in contacts]
+    print(app.url_map)
+    
+    print("REDIRECTING!!!")
+
+    return redirect(url_for('Welcome'))
+
+
+    
 
     
 

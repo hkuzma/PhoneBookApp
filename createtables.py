@@ -77,7 +77,7 @@ create_table = '''
 CREATE TABLE Posts (
     'user_id',
     'contact_id',
-    'post_id',
+    'post_id' INTEGER PRIMARY KEY AUTOINCREMENT,
     'date_posted',
     'post_text',
     FOREIGN KEY(contact_id) REFERENCES Contact_Info(contact_id),
