@@ -91,25 +91,6 @@ df_contacts = pd.read_csv("Posts.csv")
 # Insert into the Contact_Info table
 df_contacts.to_sql("Posts", con, if_exists='append', index=False)
 
-
-# Create Tags table
-create_table = '''
-CREATE TABLE Tags (
-    'tag_id' INTEGER PRIMARY KEY AUTOINCREMENT,
-    'contact_id',
-    'user_id',
-    'tag',
-    FOREIGN KEY(contact_id) REFERENCES Contact_Info(contact_id)
-    FOREIGN KEY(user_id) REFERENCES Users(user_id)
-)'''
-create_new_table("Tags", create_table)
-
-# Load contacts from CSV using pandas
-df_contacts = pd.read_csv("Tags.csv")
-
-# Insert into the Contact_Info table
-df_contacts.to_sql("Tags", con, if_exists='append', index=False)
-
 # Insert a testing user record
 insert_records = '''
 INSERT INTO Users (
@@ -121,7 +102,7 @@ INSERT INTO Users (
     'first_name',
     'last_name'
 ) VALUES (
-    11,
+    23,
     'henrykuzma42@gmail.com',
     'hkuzma',
     '1234',
