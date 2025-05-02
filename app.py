@@ -38,9 +38,9 @@ def get_birthdays(contacts):
     birthday = []
     
     for contact in contacts:
-        contactmonth = int(contact[9].split('/')[0])
-        contactday = int(contact[9].split('/')[1])
-        contactyear = int(contact[9].split('/')[2])
+        contactmonth = int(contact[8].split('/')[0])
+        contactday = int(contact[8].split('/')[1])
+        contactyear = int(contact[8].split('/')[2])
         
         if contactmonth == month:
             if contactday-7<day and contactday >= day:
@@ -264,7 +264,75 @@ def Contacts():
     
     return render_template("Contacts.html", user_id=user_id, contacts=contacts)
 
+@app.route('/add_contact', methods=['POST'])
+def add_contact():
+    # Extract form data
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    email = request.form.get('email', None)
+    phone = request.form['phone']
+    relationship_context = request.form['relationship_context']
+    residence = request.form.get('residence', None)
+    company = request.form.get('company', None)
+    birthday = request.form.get('birthday', None)
+    friendship_score = request.form.get('friendship_score', None)
+    
+    
+    if birthday == "":
+        birthday == 00-00-0000
+    
+    # Get today's date in m/d/y format
+    added_date = datetime.datetime.now()
+    
+    yearhold = str(added_date).split('-')[0]
+    print(yearhold)
+    year = yearhold[2]
+    year += yearhold[3]
+    year = year
+    month = str(added_date).split('-')[1]
+    day = str(added_date).split('-')[2].split(' ')[0]
+    
+    date = month
+    date += "/"
+    date+=day
+    date+= year
+    
+    yearhold = str(birthday).split('-')[0]
+        
+    year = yearhold[2]
+    year += yearhold[3]
+    year = int(year)
+    month = int(str(birthday).split('-')[1])
+    day = int(str(birthday).split('-')[2].split(' ')[0])
+        
+    birthday = str(month)
+    birthday += "/"
+    birthday += str(day)
+    birthday += "/"
+    birthday += str(year)
 
+    # User ID from session (assuming a logged-in user)
+    user_id = session.get('user_id')
+
+    # Insert into database
+    con = sqlite3.connect('PhoneBook.db')
+    cursor = con.cursor()
+
+    cursor.execute('''
+        INSERT INTO Contact_Info (
+            user_id, first_name, last_name, email, phone, relationship_context,
+            residence, company, birthday, added_date, friendship_score
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ''', (
+        user_id, first_name, last_name, email, phone, relationship_context,
+        residence, company, birthday, date, friendship_score
+    ))
+
+    con.commit()
+    con.close()
+
+    # Redirect back to the welcome page after adding the contact
+    return redirect(url_for('Welcome'))
 
     
 
