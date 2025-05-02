@@ -12,7 +12,7 @@
         const jscontacts = {{js_contacts | tojson}}
     </script>   
   <div class="header">
-    <a href="/Welcome">PhoneBook<//a>
+    <a href="/Welcome">PhoneBook</a>
 </div>
 <div class="all">
     <div class="sidebar">
@@ -42,7 +42,28 @@
         <div class="boxholder">
             <a href="/Birthdays">Birthdays</a>
             <div class="welcomebox">
-                <input type="date" />
+                <table>
+                    {%for i in range(0,todaybirthdays|length)%}
+                    <tr>
+                        <td class = "contact">
+                            <img class = "photo" src = "../static/empty-profile-grey.jpg"></img>
+                            {{todaybirthdays[i][2]}}&nbsp;{{todaybirthdays[i][3]}}'s birthday is today!
+                            <img class = "birthday" src = "../static/148-1484921_birthday-cake-emoji-de-torta-de-whatsapp.png"/>
+                        </td>
+                    </tr>
+                    {%endfor%}
+                    {%for i in range(0,upcomingbirthdays|length)%}
+                    <tr>
+                        <td class = "contact">
+                            <img class = "photo" src = "../static/empty-profile-grey.jpg"></img>
+                            {{upcomingbirthdays[i][2]}}&nbsp;{{upcomingbirthdays[i][3]}}'s birthday is coming up on {{upcomingbirthdays[i][9].split('/')[0]}}/{{upcomingbirthdays[i][9].split('/')[1]}}
+                        </td>
+                    </tr>
+                    {%endfor%}
+
+                </table>
+
+
             </div>
         </div>
 

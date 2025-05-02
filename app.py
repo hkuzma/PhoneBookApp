@@ -12,6 +12,7 @@ def get_info_item(USER, item):
     info_item = cur.execute(f"SELECT {item} FROM Users WHERE user_id = {USER}").fetchall()
     con.close()
     return info_item[0][0]
+    
 
 
 def query_items(search):
@@ -20,8 +21,37 @@ def query_items(search):
 
     con.close()
 
-def get_birthdays(user):
-    today = datetime.date()
+def get_birthdays(contacts):
+    today = datetime.datetime.now()
+    yearhold = str(today).split('-')[0]
+    
+    year = yearhold[2]
+    year += yearhold[3]
+    year = int(year)
+    month = int(str(today).split('-')[1])
+    day = int(str(today).split('-')[2].split(' ')[0])
+    
+    next7 = []
+    birthday = []
+    
+    for contact in contacts:
+        contactmonth = int(contact[9].split('/')[0])
+        contactday = int(contact[9].split('/')[1])
+        contactyear = int(contact[9].split('/')[2])
+        
+        if contactmonth == month:
+            if contactday-7<day:
+                if contactday == day:
+                    birthday.append((contact))
+                else:
+                    next7.append(contact)
+
+        #print(f"{contactmonth}//{contactday}")
+        #print(int(contactmonth))
+        #print(f"{month}/{day}")
+        
+    return (next7, birthday)
+    
 
     return None
 def check_user(user_name, password):
@@ -127,11 +157,17 @@ def Welcome():
     print(user_id)
     username = get_info_item(user_id, 'first_name')
     contacts = get_contacts(user_id)
+    
+    birthday_info = get_birthdays(contacts)
+    
+    upcomingbirthdays = birthday_info[0]
+    todaybirthdays = birthday_info[1]
+    
     js_contacts = [list(contact) for contact in contacts]
 
     
     if user_id:
-        return render_template("Welcome.html", user_id=user_id, username=username, contacts=contacts, js_contacts=js_contacts)
+        return render_template("Welcome.html", user_id=user_id, username=username, contacts=contacts, js_contacts=js_contacts, upcomingbirthdays=upcomingbirthdays, todaybirthdays=todaybirthdays)
     return render_template("Welcome.html")
 
 @app.route("/Contacts")

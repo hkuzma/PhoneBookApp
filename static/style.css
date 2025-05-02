@@ -23,7 +23,7 @@ body{
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
-    padding-left: 0vw;
+    padding-left: 2vw;
     padding-right:3vw;
     column-gap: 3vw;
     max-width: 100vw;
@@ -66,12 +66,18 @@ label, a{
 .contact:hover{
     box-shadow: 10px      10px      20px   0       black;   
 }
-.contact:{
-    width:50vw;
-    height:50vw;
-    background-color: blue;
 
+.contact{
+    margin-left:5vw;
 }
+
+.birthday{
+    width:4vw;
+    height:4vw;
+}
+
+
+
 /*LANDING PAGE===================================================================================*/
 
 .landing{
@@ -93,14 +99,15 @@ label, a{
 .sidebar{
     background-color: lightgray;
     width:22vw;
-    height:100vh;
+    height:140vh;
     padding-left: 2vw;
 }
 
 
 table{
     margin-top:1vh;
-    margin-bottom: ;
+    margin-bottom:1vh ;
+    margin-left:1vw;
 }
 
 
