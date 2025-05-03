@@ -17,17 +17,6 @@ def get_info_item(USER, item):
     info_item = cur.execute(f"SELECT {item} FROM Users WHERE user_id = {USER}").fetchall()
     con.close()
     return info_item[0][0]
-    
-# def remove_contact(USER, CONTACT):
-
-    
-
-
-def query_items(search):
-    con = sqlite3.connect('PhoneBook.db')
-    cur = con.cursor()
-
-    con.close()
 
 def get_birthdays(contacts):
     today = datetime.datetime.now()
@@ -62,6 +51,7 @@ def get_birthdays(contacts):
     
 
     return None
+
 def check_user(user_name, password):
     con = sqlite3.connect('Phonebook.db')
     cur = con.cursor()
@@ -84,29 +74,13 @@ def get_contacts(user):
     contacts = cur.execute(f"SELECT * FROM Contact_Info WHERE user_id == {user} ").fetchall()
     
     return contacts
+
 def get_posts(user, contact):
     con = sqlite3.connect('Phonebook.db')
     cur = con.cursor()
     posts = cur.execute(f"SELECT * FROM Posts WHERE user_id == {user} AND contact_id == {contact} ").fetchall()
     
     return posts
-    
-
-# Add a contact
-def add_contact(user_id):
-    print("Add New Contact:")
-    first = input("First Name: ")
-    last = input("Last Name: ")
-    phone = input("Phone Number: ")
-    email = input("Email: ")
-
-    con = sqlite3.connect('Phonebook.db')
-    cursor = con.cursor()
-    cursor.execute("INSERT INTO Contact_Info (user_id, first_name, last_name, phone, email) VALUES (?, ?, ?, ?, ?)",
-                   (user_id, first, last, phone, email))
-    con.commit()
-    con.close()
-    print("Contact added!\n")
 
 # Edit a contact
     
@@ -189,31 +163,34 @@ def edit(contact_id):
     return render_template("Edit.html", user_id=user_id, username=username, contact=contact, js_contacts=js_contacts, upcomingbirthdays=upcomingbirthdays, todaybirthdays=todaybirthdays)
 
 
-@app.route("/Posts/<int:contact_id>")
-def viewPosts(contact_id):
-    user_id = session.get('user_id')
-    
-    user_id = session.get('user_id')
-    username = get_info_item(user_id, 'first_name')
-    contacts = get_contacts(user_id)
-    contact = contacts[contact_id]
-    
-    posts = get_posts(user_id, contact_id)
-    
-    
-    
-    js_contacts = [list(contact) for contact in contacts]
-    print(contact_id)
-    print(f"VIEW CONTACT {contact}")
-    
+@app.route('/ContactPosts/<int:contact_id>')
+def view_contact_posts(contact_id):
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
 
-    
-    
-    return render_template("Posts.html", user_id=user_id, username=username, contact=contact, js_contacts=js_contacts, posts=posts, index=contact_id)
+    conn = sqlite3.connect('PhoneBook.db')
+    c = conn.cursor()
 
-    
+    # Get contact's name
+    c.execute("SELECT first_name, last_name FROM Contact_Info WHERE contact_id = ?", (contact_id,))
+    contact = c.fetchone()
+    if not contact:
+        conn.close()
+        return "Contact not found", 404
+    contact_name = f"{contact[0]} {contact[1]}"
 
-    
+    # Get posts associated with this contact
+    c.execute('''SELECT post_text, date_posted 
+                 FROM Posts 
+                 WHERE contact_id = ? 
+                 ORDER BY date_posted DESC''', (contact_id,))
+    posts = c.fetchall()
+
+    conn.close()
+
+    return render_template('Posts.html', contact_name=contact_name, posts=posts, contact_id=contact_id)
+
+
     
 @app.route("/SubmitContact/<int:contact_id>", methods=['GET','POST'])
 def submitContact(contact_id):
@@ -381,24 +358,41 @@ def add_contact():
     # Redirect back to the welcome page after adding the contact
     return redirect(url_for('Welcome'))
 
-@app.route('/add_post/<int:contact_id>', methods =['POST'])
+@app.route('/add_post/<int:contact_id>', methods=['POST'])
 def add_post(contact_id):
+    if 'user_id' not in session:
+        return redirect(url_for('login'))  # Redirect to login if the user is not logged in
+
+    # Retrieve the content of the new post from the form
+    content = request.form['content'].strip()
+    if not content:
+        return "Post content cannot be empty.", 400  # Handle empty posts
+
+    # Get the current date and format it as MM/DD/YY
     added_date = datetime.datetime.now()
-    
-    yearhold = str(added_date).split('-')[0]
-    print(yearhold)
-    year = yearhold[2]
-    year += yearhold[3]
-    year = year
-    month = str(added_date).split('-')[1]
-    day = str(added_date).split('-')[2].split(' ')[0]
-    
-    date = month
-    date += "/"
-    date+=day
-    date+= year
-    
-    user_id = session.get('user_id')
+    year = str(added_date.year)[2:]  # Last two digits of the year
+    month = str(added_date.month).zfill(2)  # Ensure two digits for month
+    day = str(added_date.day).zfill(2)  # Ensure two digits for day
+    date = f"{month}/{day}/{year}"
+
+    # Get the current user's ID from the session
+    user_id = session['user_id']
+
+    # Insert the new post into the database
+    try:
+        conn = sqlite3.connect('PhoneBook.db')
+        c = conn.cursor()
+        c.execute('''
+            INSERT INTO Posts (contact_id, user_id, post_text, date_posted)
+            VALUES (?, ?, ?, ?)
+        ''', (contact_id, user_id, content, date))
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        return f"Error while adding post: {e}", 500  # Handle any database errors
+
+    # After adding the post, redirect to the contact's posts page
+    return redirect(url_for('view_contact_posts', contact_id=contact_id))
 
     # post = request.form['post']
     # con = sqlite3.connect('PhoneBook.db')

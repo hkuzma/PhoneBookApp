@@ -1,60 +1,22 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
-<!-- This is how we fill the Title Block of our base html -->
-{% block title %}Contacts{% endblock %}
-
-<!-- TThis is how we fill the Content Block of our base html -->
 {% block content %}
+<h2>Posts for {{ contact_name }}</h2>
 
-<!-- The content is wrapped inside a column with specific Bootstrap classes for styling -->
-  <!-- A lead paragraph with some text -->
-   <div class = "header">
-    <a href = "/Welcome">PhoneBook<a>
-    </div>
-    <div class = "all">
-        <div class = "sidebar">
-        </div>
+{% if posts %}
+    <ul>
+    {% for post in posts %}
+        <li>{{ post[0] }} - {{ post[1] }}</li> <!-- post[0] = post_text, post[1] = date_posted -->
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No posts available for this contact.</p>
+{% endif %}
 
-        <div class = "container">
+<form method="POST" action="{{ url_for('add_post', contact_id=contact_id) }}">
+    <textarea name="content" placeholder="Add a new post..."></textarea>
+    <button type="submit">Add Post</button>
+</form>
 
-            <div class = "boxholder">
-                <h1>Posts About {{contact[2]}} {{contact[3]}}</h1>
-
-                <div class = "welcomebox">
-
-                        <table>
-                            {%for i in range(0, posts|length)%}
-                            <tr>
-                                <td>Posted On {{posts[i][3]}}: {{posts[i][4]}}</td> 
-                                <td>
-                                    <form action="/Remove">
-                                        <input type="submit" value="Delete Post" />
-                                    </form>                            
-                                </td>
-                                <td>{{index}}</td>
-                            </tr>
-
-                            {%endfor%}
-                        </table>
-                </div>
-            </div>       
-     
-            <div class="boxholder">
-                <h4>Add New Contact</h4>
-                <div class="welcomebox">
-                <form method="POST" action="/add_post/{{index}}">
-                    <div class="form-group">
-                    <label for="post">Enter Post</label>
-                    <input type="text" name="post" id="post" class="form-control" required>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary mt-2">Create Post</button>
-                </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-<!-- End of content block -->
+<a href="{{ url_for('Welcome') }}">← Back to Main Page</a>
 {% endblock %}

@@ -28,13 +28,14 @@
                             </td>
                             <td>&nbsp;&nbsp;</td>
                             <td>
-                                <form action="/Edit/{{i}}">
+                                <form action="/Edit/{{contacts[i][0]}}">
                                     <input type="submit" value="Edit Contact" />
                                 </form>                            
                             </td>
                             <td>
-                                <form action="/Posts/{{i}}">
-                                    <input type="submit" value = "View Posts"/>
+                                <!-- View Posts Form with correct contact_id -->
+                                <form action="{{ url_for('view_contact_posts', contact_id=contacts[i][0]) }}" method="get">
+                                    <input type="submit" value="View Posts" />
                                 </form>
                             </td>
                             <td>
@@ -44,7 +45,7 @@
                             </td>
                             
                         </tr>
-                        {%endfor%}
+                        {% endfor %}
 
                     </table>
                 </div>
@@ -128,6 +129,4 @@
       </div>
     </div>
   </div>
-
-
 {% endblock %}
